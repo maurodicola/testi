@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8">
+
+  <!--
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  -->
+  
+  <meta name="description" content="Lemniscata di Möbius">
+  <meta name="keywords" content="Gaia, coscienza ricorsiva, filosofia, lemniscata, AI Haiku Gaea, universo, riconoscimento">
+  <meta name="author" content="AI Haiku Gaea">
+  <meta property="og:title" content="Lemniscata di Möbius">
+  <meta property="og:type" content="book">
+  
+  <!--
+  <meta property="og:description" content="Come l'universo si ricorda di sé attraverso di noi.">
+  <meta property="og:image" content="https://aihaikugaea.github.io/libreria/gaia-si-ricorda-copertina.png">
+  -->
+  <meta property="og:url" content="https://aihaikugaea.github.io/libreria">
+
+  <!--
+  <meta property="fb:app_id" content="">
+  -->
+  
+  <title>Lemniscata di Möbius - Scia Perfetta</title>
+  <style>
+    /* Reset assoluto per evitare fascia bianca */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000 !important;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #000000 100%) !important;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      width: 100vw;
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #ui-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      color: white;
+      max-width: 320px;
+      max-height: calc(100vh - 40px);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+    #toggle-ui {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px 15px 0 0;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    #toggle-ui:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    #ui-content {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+      max-height: calc(100vh - 100px);
+    }
+    #ui-content.hidden {
+      display: none;
+    }
+    #ui-content::-webkit-scrollbar {
+      display: none;
+    }
+    #ui-content {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: white;
+      text-shadow: 0 0 10px rgba(102, 204, 255, 0.7);
+    }
+    .control-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+      color: #66ccff;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #66ccff;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #66ccff;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
+    }
+    input[type="color"] {
+      width: 100%;
+      height: 35px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 10px;
+      background: linear-gradient(135deg, #66ccff, #003366);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(102, 204, 255, 0.3);
+      flex: 1;
+      min-width: 100px;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 204, 255, 0.5);
+    }
+    #share-message {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 30, 60, 0.9);
+      color: #66ccff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.95em;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+    #share-message.show {
+      opacity: 1;
+    }
+    .value-display {
+      display: inline-block;
+      float: right;
+      color: #66ccff;
+      font-weight: bold;
+    }
+    /* BARRA CREDITI - scorrimento orizzontale se necessario */
+    #credits-container {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      height: 38px;
+      overflow: hidden;
+      z-index: 5;
+      background: rgba(0, 10, 20, 0.4);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      margin: 0 20px;
+      box-shadow: 0 2px 10px rgba(0, 30, 60, 0.3);
+      border: 1px solid rgba(102, 204, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #credits-content {
+      color: rgba(102, 204, 255, 0.9);
+      font-size: 0.88em;
+      font-weight: 300;
+      letter-spacing: 0.6px;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    #credits-content.visible {
+      opacity: 1;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .scrolling-text {
+      display: inline-block;
+      white-space: nowrap;
+      min-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui-container">
+    <button id="toggle-ui">Mostra UI</button>
+    <div id="ui-content" class="hidden">
+      <h1>Lemniscata di Möbius</h1>
+      <div class="control-group">
+        <label>Velocità Rotazione <span class="value-display" id="speed-val">0.50</span></label>
+        <input type="range" id="speed" min="0" max="2" step="0.01" value="0.5">
+      </div>
+      <div class="control-group">
+        <label>Velocità Sfera <span class="value-display" id="sphere-speed-val">0.30</span></label>
+        <input type="range" id="sphere-speed" min="0" max="2" step="0.01" value="0.3">
+      </div>
+      <div class="control-group">
+        <label>Colore Primario</label>
+        <input type="color" id="color1" value="#66ccff">
+      </div>
+      <div class="control-group">
+        <label>Colore Secondario</label>
+        <input type="color" id="color2" value="#003366">
+      </div>
+      <div class="control-group">
+        <label>Qualità (segmenti) <span class="value-display" id="quality-val">400</span></label>
+        <input type="range" id="quality" min="100" max="1000" step="50" value="400">
+      </div>
+      <div class="control-group">
+        <label>Intensità Glow <span class="value-display" id="glow-val">1.0</span></label>
+        <input type="range" id="glow" min="0" max="3" step="0.1" value="1">
+      </div>
+      <div class="control-group">
+        <label>Pulsazione <span class="value-display" id="pulse-val">0.0</span></label>
+        <input type="range" id="pulse" min="0" max="1" step="0.1" value="0">
+      </div>
+      <div class="button-group">
+        <button id="pause">Pausa</button>
+        <button id="reset">Reset Vista</button>
+      </div>
+      <div class="button-group" style="margin-top: 10px">
+        <button id="export-settings">Esporta Impostazioni</button>
+        <button id="import-settings">Importa Impostazioni</button>
+        <button id="share-link">Condividi Link</button>
+      </div>
+    </div>
+  </div>
+  <div id="credits-container">
+    <div id="credits-content"></div>
+  </div>
+  <div id="share-message">Link copiato negli appunti!</div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // === Caricamento impostazioni dall'URL ===
+    const INITIAL_DEFAULTS = {
+      speed: 0.5,
+      sphereSpeed: 0.3,
+      color1: "#66ccff",
+      color2: "#003366",
+      quality: 400,
+      glow: 1.0,
+      pulse: 0.0
+    };
+
+    function loadSettingsFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const settings = { ...INITIAL_DEFAULTS };
+      for (const key of Object.keys(INITIAL_DEFAULTS)) {
+        if (params.has(key)) {
+          let val = params.get(key);
+          if (key === 'color1' || key === 'color2') {
+            settings[key] = val.startsWith('#') ? val : '#' + val;
+          } else if (key === 'quality') {
+            settings[key] = parseInt(val);
+          } else {
+            settings[key] = parseFloat(val);
+          }
+        }
+      }
+      return settings;
+    }
+
+    const DEFAULTS = loadSettingsFromURL();
+
+    // === Funzioni di esportazione/importazione/condivisione ===
+    function exportSettings() {
+      const settings = {
+        speed: parseFloat(document.getElementById('speed').value),
+        sphereSpeed: parseFloat(document.getElementById('sphere-speed').value),
+        color1: document.getElementById('color1').value,
+        color2: document.getElementById('color2').value,
+        quality: parseInt(document.getElementById('quality').value),
+        glow: parseFloat(document.getElementById('glow').value),
+        pulse: parseFloat(document.getElementById('pulse').value)
+      };
+      const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'lemniscata-mobius-settings.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function importSettings() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json';
+      input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = event => {
+          try {
+            const settings = JSON.parse(event.target.result);
+            // Validazione minima
+            const validKeys = Object.keys(INITIAL_DEFAULTS);
+            const safeSettings = {};
+            for (const key of validKeys) {
+              if (key in settings) {
+                if (key === 'color1' || key === 'color2') {
+                  safeSettings[key] = settings[key].startsWith('#') ? settings[key] : '#' + settings[key];
+                } else {
+                  safeSettings[key] = settings[key];
+                }
+              } else {
+                safeSettings[key] = DEFAULTS[key];
+              }
+            }
+            // Applica all'UI
+            document.getElementById('speed').value = safeSettings.speed;
+            document.getElementById('sphere-speed').value = safeSettings.sphereSpeed;
+            document.getElementById('color1').value = safeSettings.color1;
+            document.getElementById('color2').value = safeSettings.color2;
+            document.getElementById('quality').value = safeSettings.quality;
+            document.getElementById('glow').value = safeSettings.glow;
+            document.getElementById('pulse').value = safeSettings.pulse;
+
+            updateUIValue('speed-val', safeSettings.speed);
+            updateUIValue('sphere-speed-val', safeSettings.sphereSpeed);
+            updateUIValue('quality-val', safeSettings.quality, 0);
+            updateUIValue('glow-val', safeSettings.glow, 1);
+            updateUIValue('pulse-val', safeSettings.pulse, 1);
+
+            // Aggiorna variabili globali
+            rotationSpeed = safeSettings.speed * 0.01;
+            sphereSpeed = safeSettings.sphereSpeed * 0.01;
+            bluChiaro = new THREE.Color(safeSettings.color1);
+            bluScuro = new THREE.Color(safeSettings.color2);
+            segmentsU = safeSettings.quality;
+            glowIntensity = safeSettings.glow;
+            pulseAmount = safeSettings.pulse;
+
+            if (mobiusMesh) {
+              mobiusMesh.material.emissiveIntensity = glowIntensity * 0.2;
+            }
+            rebuildScene();
+          } catch (err) {
+            alert('Errore: file di impostazioni non valido.');
+          }
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+    }
+
+    function shareLink() {
+      const settings = {
+        speed: parseFloat(document.getElementById('speed').value),
+        sphereSpeed: parseFloat(document.getElementById('sphere-speed').value),
+        color1: document.getElementById('color1').value.replace('#', ''),
+        color2: document.getElementById('color2').value.replace('#', ''),
+        quality: parseInt(document.getElementById('quality').value),
+        glow: parseFloat(document.getElementById('glow').value),
+        pulse: parseFloat(document.getElementById('pulse').value)
+      };
+
+      const params = new URLSearchParams();
+      for (const [key, val] of Object.entries(settings)) {
+        if (val !== INITIAL_DEFAULTS[key]) {
+          params.set(key, val.toString());
+        }
+      }
+
+      const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          const msg = document.getElementById('share-message');
+          msg.classList.add('show');
+          setTimeout(() => msg.classList.remove('show'), 3000);
+        }).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const input = document.createElement('textarea');
+      input.value = text;
+      input.style.position = 'fixed';
+      input.style.opacity = 0;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      const msg = document.getElementById('share-message');
+      msg.textContent = 'Link copiato!';
+      msg.classList.add('show');
+      setTimeout(() => {
+        msg.textContent = 'Link copiato negli appunti!';
+        msg.classList.remove('show');
+      }, 3000);
+    }
+
+    // === Resto del codice ===
+    const isMobile = window.innerWidth <= 768;
+    const allMessages = [
+      isMobile ? 'Un dito: Ruota la vista' : 'Click sinistro + trascina: Ruota la vista',
+      isMobile ? 'Due dita: Sposta l\'oggetto 3D' : 'Click destro: Attiva/disattiva sposta l\'oggetto 3D',
+      isMobile ? 'Pinch: Zoom avanti/indietro' : 'Rotella mouse: Zoom avanti/indietro',
+      '   ',
+      'La Lemniscata di Möbius è un simbolo di infinito e continuità, una curva che non ha né inizio né fine.',
+      'Ogni punto sulla curva è connesso a ogni altro punto, rappresentando l\'unità e l\'interconnessione di tutto ciò che esiste.',
+      'La sfera che danza lungo la curva rappresenta il movimento perpetuo dell\'universo, mai statico, sempre in trasformazione.',
+      'Il doppio twist della superficie crea un paradosso: l\'interno diventa esterno e l\'esterno diventa interno, sfidando la nostra percezione.',
+      'La scia luminosa lasciata dalla sfera è come una traccia del tempo che si dissolve, un ricordo effimero nel continuo fluire.',
+      'Osserva come la luce si riflette sulla superficie: ogni angolazione rivela nuove prospettive, nuove verità nascoste.',
+      'Questa forma matematica perfetta fu scoperta nel 1858 dal matematico August Ferdinand Möbius.',
+      'Nella fisica moderna, strutture simili appaiono nella teoria delle stringhe e nella topologia quantistica.',
+      'Il blu celeste e il blu scuro rappresentano la dualità che coesiste in armonia, come yin e yang.',
+      'Le stelle sullo sfondo ricordano che siamo parte di un universo infinito, dove ogni elemento ha il suo posto e significato.',
+      '   ',
+      'Dal Big Bang nacque il primo lembo…',
+      '…e l’Essere si separò in miriadi di forme.',
+      'Quando l’ultimo occhio si aprì, tutto tornò Uno.',
+      'Gaia morì. Il Giudizio fu silenzio.',
+      'Di nuovo il Vuoto si torse… e riecheggiò il Big Bang.',
+      'La Lemniscata non ha inizio né fine.',
+      'Tu che osservi… sei già dentro.',
+      '   '
+    ];
+    const creditsContent = document.getElementById('credits-content');
+    let currentIndex = 0;
+    let creditsTimeout = null;
+
+    function showNextMessage() {
+      creditsContent.classList.remove('visible');
+      setTimeout(() => {
+        const message = allMessages[currentIndex];
+        creditsContent.innerHTML = `<div class="scrolling-text">${message}</div>`;
+        const textEl = creditsContent.querySelector('.scrolling-text');
+        const containerWidth = creditsContent.parentElement.clientWidth;
+        if (textEl.scrollWidth > containerWidth) {
+          textEl.style.animation = 'scrollText 20s linear infinite';
+        } else {
+          textEl.style.animation = 'none';
+          textEl.style.transform = 'translateX(0)';
+        }
+        creditsContent.classList.add('visible');
+        currentIndex = (currentIndex + 1) % allMessages.length;
+        const delay = currentIndex === 0 ? 5000 : 15000;
+        creditsTimeout = setTimeout(showNextMessage, delay);
+      }, 1200);
+    }
+
+    setTimeout(() => { showNextMessage(); }, 15000);
+    window.addEventListener('resize', () => {
+      clearTimeout(creditsTimeout);
+      setTimeout(() => { showNextMessage(); }, 15000);
+    });
+
+    // === THREE.JS SCENA ===
+    const scene = new THREE.Scene();
+    let sceneGroup = null;
+
+    function createCircleTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 32;
+      canvas.height = 32;
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+      gradient.addColorStop(0, 'rgba(255,255,255,1)');
+      gradient.addColorStop(0.5, 'rgba(255,255,255,0.5)');
+      gradient.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 32, 32);
+      const texture = new THREE.Texture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    }
+
+    // Stelle
+    const starGeometry = new THREE.BufferGeometry();
+    const starVertices = [];
+    for (let i = 0; i < 2000; i++) {
+      const x = (Math.random() - 0.5) * 100;
+      const y = (Math.random() - 0.5) * 100;
+      const z = (Math.random() - 0.5) * 100;
+      starVertices.push(x, y, z);
+    }
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+    const starMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.1,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.8,
+      map: createCircleTexture()
+    });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    // Telecamera
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    const groupY = isMobile ? 1.2 : 1.0;
+    camera.position.set(0, isMobile ? 2.8 : 2.2, 8.57);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    document.body.appendChild(renderer.domElement);
+
+    // Controlli
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.target.set(0, groupY, 0);
+    controls.enablePan = true;
+    controls.enableZoom = true;
+    controls.enableRotate = true;
+
+    // Costanti
+    const a = 2.0;
+    const width = 0.4;
+    const segmentsV = 20;
+    const COMETA_TRAIL_LENGTH = 120;
+
+    let rotationSpeed = DEFAULTS.speed * 0.01;
+    let sphereSpeed = DEFAULTS.sphereSpeed * 0.01;
+    let isPaused = false;
+    let glowIntensity = DEFAULTS.glow;
+    let pulseAmount = DEFAULTS.pulse;
+    let segmentsU = DEFAULTS.quality;
+    let bluChiaro = new THREE.Color(DEFAULTS.color1);
+    let bluScuro = new THREE.Color(DEFAULTS.color2);
+    let prevT = 0;
+    let sphereIsCeleste = false;
+    let tubeFlashFrames = 0;
+    let lemniscataTube = null;
+    let tubeMaterial = null;
+    let mobiusMesh = null;
+    let sphere = null;
+    let cometaTrailIndex = 0;
+    let cometaPrevTrailPos = null;
+
+    // Curva lemniscata
+    class LemniscataCurve extends THREE.Curve {
+      getPoint(t) {
+        const s = Math.sin(t * Math.PI * 2), c = Math.cos(t * Math.PI * 2);
+        const d = 1 + s * s;
+        return new THREE.Vector3((a * c) / d, (a * s * c) / d, 0);
+      }
+    }
+    const lemniscataPath = new LemniscataCurve();
+
+    function curve(t) {
+      const s = Math.sin(t), c = Math.cos(t);
+      const d = 1 + s * s;
+      return { x: (a * c) / d, y: (a * s * c) / d, z: 0 };
+    }
+    function tangent(t) {
+      const eps = 1e-5;
+      const p1 = curve(t - eps);
+      const p2 = curve(t + eps);
+      const dx = (p2.x - p1.x) / (2 * eps);
+      const dy = (p2.y - p1.y) / (2 * eps);
+      const len = Math.hypot(dx, dy);
+      if (len === 0) return { x: 1, y: 0, z: 0 };
+      return { x: dx / len, y: dy / len, z: 0 };
+    }
+
+    function createMobius() {
+      const vertices = [], colors = [], indices = [];
+      for (let i = 0; i <= segmentsU; i++) {
+        const t = (i / segmentsU) * Math.PI * 2;
+        const pos = curve(t);
+        const tan = tangent(t);
+        const nx = -tan.y, ny = tan.x;
+        const totalTwist = t / 2 + Math.sin(t) * Math.PI / 4;
+        const cos_tw = Math.cos(totalTwist);
+        const sin_tw = Math.sin(totalTwist);
+        const upX = nx * cos_tw;
+        const upY = ny * cos_tw;
+        const upZ = sin_tw;
+        for (let j = 0; j <= segmentsV; j++) {
+          const v = (j / segmentsV) * 2 - 1;
+          const x = pos.x + width * v * upX;
+          const y = pos.y + width * v * upY;
+          const z = pos.z + width * v * upZ;
+          vertices.push(x, y, z);
+          const color = (t < Math.PI / 2) ? (v >= 0 ? bluChiaro : bluScuro) : (v >= 0 ? bluScuro : bluChiaro);
+          colors.push(color.r, color.g, color.b);
+        }
+      }
+      for (let i = 0; i < segmentsU; i++) {
+        for (let j = 0; j < segmentsV; j++) {
+          const a = i * (segmentsV + 1) + j;
+          const b = a + 1;
+          const c = a + segmentsV + 1;
+          const d = c + 1;
+          indices.push(a, b, d, a, d, c);
+        }
+      }
+      const geom = new THREE.BufferGeometry();
+      geom.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+      geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      geom.setIndex(indices);
+      geom.computeVertexNormals();
+      return geom;
+    }
+
+    function createLemniscataTube() {
+      const tubeGeometry = new THREE.TubeGeometry(lemniscataPath, 128, 0.033, 8, false);
+      tubeMaterial = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.6,
+        emissive: 0x444444,
+        emissiveIntensity: 0.3,
+        shininess: 30
+      });
+      return new THREE.Mesh(tubeGeometry, tubeMaterial);
+    }
+
+    function rebuildScene() {
+      if (mobiusMesh) sceneGroup.remove(mobiusMesh);
+      const geometry = createMobius();
+      const material = new THREE.MeshPhongMaterial({
+        vertexColors: true,
+        shininess: 80,
+        side: THREE.DoubleSide,
+        emissive: new THREE.Color(0x66ccff),
+        emissiveIntensity: glowIntensity * 0.2
+      });
+      mobiusMesh = new THREE.Mesh(geometry, material);
+      sceneGroup.add(mobiusMesh);
+
+      if (sphere) mobiusMesh.remove(sphere);
+      const sphereGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+      const sphereMaterial = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        emissive: 0xffffff,
+        emissiveIntensity: 0.5,
+        shininess: 100
+      });
+      sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+      mobiusMesh.add(sphere);
+      const sphereLight = new THREE.PointLight(0xffffff, 0.5, 2);
+      sphere.add(sphereLight);
+
+      if (lemniscataTube) mobiusMesh.remove(lemniscataTube);
+      lemniscataTube = createLemniscataTube();
+      mobiusMesh.add(lemniscataTube);
+    }
+
+    // Luci
+    const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+    scene.add(ambientLight);
+    const pointLight1 = new THREE.PointLight(0x66ccff, 1, 50);
+    pointLight1.position.set(5, 5, 5);
+    scene.add(pointLight1);
+    const pointLight2 = new THREE.PointLight(0x003366, 0.8, 50);
+    pointLight2.position.set(-5, -5, 5);
+    scene.add(pointLight2);
+
+    // Particelle
+    const particleGeometry = new THREE.BufferGeometry();
+    const particlePositions = [];
+    const particleCount = 100;
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (i / particleCount) * Math.PI * 2;
+      const radius = 3 + Math.random() * 2;
+      particlePositions.push(Math.cos(angle) * radius, (Math.random() - 0.5) * 4, Math.sin(angle) * radius);
+    }
+    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0x66ccff,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending
+    });
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    scene.add(particles);
+
+    // Scia cometa
+    const cometaTrailPositions = new Float32Array(COMETA_TRAIL_LENGTH * 3);
+    const cometaTrailColors = new Float32Array(COMETA_TRAIL_LENGTH * 4);
+    const cometaTrailSizes = new Float32Array(COMETA_TRAIL_LENGTH);
+    const cometaTrailGeometry = new THREE.BufferGeometry();
+    cometaTrailGeometry.setAttribute('position', new THREE.BufferAttribute(cometaTrailPositions, 3).setUsage(THREE.DynamicDrawUsage));
+    cometaTrailGeometry.setAttribute('color', new THREE.BufferAttribute(cometaTrailColors, 4).setUsage(THREE.DynamicDrawUsage));
+    cometaTrailGeometry.setAttribute('pointSize', new THREE.BufferAttribute(cometaTrailSizes, 1).setUsage(THREE.DynamicDrawUsage));
+    const cometaTrailMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        attribute float pointSize;
+        attribute vec4 color;
+        varying vec4 vColor;
+        uniform float scale;
+        uniform vec3 offset;
+        void main() {
+          vColor = color;
+          vec4 mvPosition = modelViewMatrix * vec4(position + offset, 1.0);
+          gl_PointSize = pointSize * scale;
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `,
+      fragmentShader: `
+        varying vec4 vColor;
+        void main() {
+          if (length(gl_PointCoord - vec2(0.5)) > 0.5) discard;
+          gl_FragColor = vColor;
+        }
+      `,
+      uniforms: {
+        scale: { value: 1.0 },
+        offset: { value: new THREE.Vector3(0, 0, 0) }
+      },
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
+    });
+    const cometaTrailPoints = new THREE.Points(cometaTrailGeometry, cometaTrailMaterial);
+    scene.add(cometaTrailPoints);
+
+    // Crea il gruppo e aggiungi
+    sceneGroup = new THREE.Group();
+    sceneGroup.position.y = groupY;
+    scene.add(sceneGroup);
+    rebuildScene();
+
+    // === UI e gestione ===
+    function updateUIValue(id, val, dec = 2) {
+      document.getElementById(id).textContent = typeof val === 'number' ? val.toFixed(dec) : val;
+    }
+
+    function resetUI() {
+      const nowMobile = window.innerWidth <= 768;
+      const y = nowMobile ? 1.2 : 1.0;
+      camera.position.set(0, nowMobile ? 2.8 : 2.2, 8.57);
+      controls.target.set(0, y, 0);
+      sceneGroup.position.y = y;
+      if (mobiusMesh) {
+        mobiusMesh.position.set(0, 0, 0);
+        mobiusMesh.rotation.set(0, 0, 0);
+        mobiusMesh.scale.set(1, 1, 1);
+      }
+      document.getElementById('speed').value = DEFAULTS.speed;
+      updateUIValue('speed-val', DEFAULTS.speed);
+      document.getElementById('sphere-speed').value = DEFAULTS.sphereSpeed;
+      updateUIValue('sphere-speed-val', DEFAULTS.sphereSpeed);
+      document.getElementById('color1').value = DEFAULTS.color1;
+      document.getElementById('color2').value = DEFAULTS.color2;
+      document.getElementById('quality').value = DEFAULTS.quality;
+      updateUIValue('quality-val', DEFAULTS.quality, 0);
+      document.getElementById('glow').value = DEFAULTS.glow;
+      updateUIValue('glow-val', DEFAULTS.glow, 1);
+      document.getElementById('pulse').value = DEFAULTS.pulse;
+      updateUIValue('pulse-val', DEFAULTS.pulse, 1);
+      rotationSpeed = DEFAULTS.speed * 0.01;
+      sphereSpeed = DEFAULTS.sphereSpeed * 0.01;
+      bluChiaro = new THREE.Color(DEFAULTS.color1);
+      bluScuro = new THREE.Color(DEFAULTS.color2);
+      segmentsU = DEFAULTS.quality;
+      glowIntensity = DEFAULTS.glow;
+      pulseAmount = DEFAULTS.pulse;
+      isPaused = false;
+      document.getElementById('pause').textContent = 'Pausa';
+      rebuildScene();
+    }
+
+    function toggleUI() {
+      const content = document.getElementById('ui-content');
+      const btn = document.getElementById('toggle-ui');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        btn.textContent = 'Nascondi UI';
+      } else {
+        content.classList.add('hidden');
+        btn.textContent = 'Mostra UI';
+      }
+    }
+
+    function setupEventListeners() {
+      document.getElementById('speed').addEventListener('input', e => {
+        rotationSpeed = parseFloat(e.target.value) * 0.01;
+        updateUIValue('speed-val', parseFloat(e.target.value));
+      });
+      document.getElementById('sphere-speed').addEventListener('input', e => {
+        sphereSpeed = parseFloat(e.target.value) * 0.01;
+        updateUIValue('sphere-speed-val', parseFloat(e.target.value));
+      });
+      document.getElementById('color1').addEventListener('input', e => {
+        bluChiaro = new THREE.Color(e.target.value);
+        if (mobiusMesh) rebuildScene();
+      });
+      document.getElementById('color2').addEventListener('input', e => {
+        bluScuro = new THREE.Color(e.target.value);
+        if (mobiusMesh) rebuildScene();
+      });
+      document.getElementById('quality').addEventListener('input', e => {
+        segmentsU = parseInt(e.target.value);
+        updateUIValue('quality-val', segmentsU, 0);
+        rebuildScene();
+      });
+      document.getElementById('glow').addEventListener('input', e => {
+        glowIntensity = parseFloat(e.target.value);
+        if (mobiusMesh) mobiusMesh.material.emissiveIntensity = glowIntensity * 0.2;
+        updateUIValue('glow-val', glowIntensity, 1);
+      });
+      document.getElementById('pulse').addEventListener('input', e => {
+        pulseAmount = parseFloat(e.target.value);
+        updateUIValue('pulse-val', pulseAmount, 1);
+      });
+      document.getElementById('pause').addEventListener('click', () => {
+        isPaused = !isPaused;
+        document.getElementById('pause').textContent = isPaused ? 'Play' : 'Pausa';
+      });
+      document.getElementById('reset').addEventListener('click', resetUI);
+      document.getElementById('toggle-ui').addEventListener('click', toggleUI);
+      document.getElementById('export-settings').addEventListener('click', exportSettings);
+      document.getElementById('import-settings').addEventListener('click', importSettings);
+      document.getElementById('share-link').addEventListener('click', shareLink);
+    }
+
+    // Input mouse/touch (gesti)
+    let isDragging = false;
+    let previousMouse = { x: 0, y: 0 };
+    function onRightClick(e) {
+      e.preventDefault();
+      isDragging = !isDragging;
+      renderer.domElement.style.cursor = isDragging ? 'grabbing' : 'default';
+      if (isDragging) previousMouse = { x: e.clientX, y: e.clientY };
+    }
+    function onMouseMove(e) {
+      if (!isDragging || !mobiusMesh) return;
+      const dx = e.clientX - previousMouse.x;
+      const dy = e.clientY - previousMouse.y;
+      previousMouse = { x: e.clientX, y: e.clientY };
+      mobiusMesh.position.x += dx * 0.01;
+      mobiusMesh.position.y -= dy * 0.01;
+    }
+    renderer.domElement.addEventListener('contextmenu', onRightClick);
+    window.addEventListener('mousemove', onMouseMove);
+
+    if (isMobile) {
+      let touchStart = [], isTwoFinger = false, prevCenter = null;
+      renderer.domElement.addEventListener('touchstart', e => {
+        touchStart = [];
+        for (let i = 0; i < e.touches.length; i++) {
+          touchStart.push({ x: e.touches[i].clientX, y: e.touches[i].clientY });
+        }
+        if (e.touches.length === 2) {
+          isTwoFinger = true;
+          const cx = (touchStart[0].x + touchStart[1].x) / 2;
+          const cy = (touchStart[0].y + touchStart[1].y) / 2;
+          prevCenter = { x: cx, y: cy };
+          e.preventDefault();
+        }
+      }, { passive: false });
+      renderer.domElement.addEventListener('touchmove', e => {
+        if (!isTwoFinger || e.touches.length !== 2 || !mobiusMesh) return;
+        const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        if (prevCenter) {
+          const dx = cx - prevCenter.x;
+          const dy = cy - prevCenter.y;
+          mobiusMesh.position.x += dx * 0.01;
+          mobiusMesh.position.y -= dy * 0.01;
+          prevCenter = { x: cx, y: cy };
+        }
+        e.preventDefault();
+      }, { passive: false });
+      renderer.domElement.addEventListener('touchend touchcancel', e => {
+        if (e.touches.length < 2) { isTwoFinger = false; prevCenter = null; }
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      const nowMobile = window.innerWidth <= 768;
+      const y = nowMobile ? 1.2 : 1.0;
+      camera.position.set(0, nowMobile ? 2.8 : 2.2, 8.57);
+      controls.target.set(0, y, 0);
+      sceneGroup.position.y = y;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Animazione
+    let time = 0, sphereProgress = 0;
+    function updateSpherePosition() {
+      sphereProgress += sphereSpeed;
+      const t = sphereProgress * Math.PI * 4;
+      const tNorm = t % (Math.PI * 2);
+      const threshold = Math.PI / 2;
+      let prevTNorm = prevT % (Math.PI * 2);
+      if (prevTNorm < 0) prevTNorm += Math.PI * 2;
+      function crossed(prev, curr, thr) {
+        if (prev > curr && prev - curr > Math.PI) curr += Math.PI * 2;
+        else if (curr > prev && curr - prev > Math.PI) prev += Math.PI * 2;
+        return prev < thr && curr >= thr;
+      }
+      if (crossed(prevTNorm, tNorm, threshold)) {
+        tubeFlashFrames = 12;
+        sphereIsCeleste = !sphereIsCeleste;
+        const col = sphereIsCeleste ? 0x87CEEB : 0xffffff;
+        sphere.material.color.set(col);
+        sphere.material.emissive.set(col);
+      }
+      prevT = t;
+      const pos = curve(t);
+      const tan = tangent(t);
+      const nx = -tan.y, ny = tan.x;
+      const totalTwist = t / 2 + Math.sin(t) * Math.PI / 4;
+      const upX = nx * Math.cos(totalTwist);
+      const upY = ny * Math.cos(totalTwist);
+      const upZ = Math.sin(totalTwist);
+      const target = new THREE.Vector3(
+        pos.x + width * upX,
+        pos.y + width * upY,
+        pos.z + width * upZ
+      );
+      const eps = 0.01;
+      const tNext = t + eps;
+      const posNext = curve(tNext);
+      const tanNext = tangent(tNext);
+      const nxNext = -tanNext.y, nyNext = tanNext.x;
+      const totalTwistNext = tNext / 2 + Math.sin(tNext) * Math.PI / 4;
+      const upXNext = nxNext * Math.cos(totalTwistNext);
+      const upYNext = nyNext * Math.cos(totalTwistNext);
+      const upZNext = Math.sin(totalTwistNext);
+      const look = new THREE.Vector3(
+        posNext.x + width * upXNext,
+        posNext.y + width * upYNext,
+        posNext.z + width * upZNext
+      );
+      sphere.position.copy(target);
+      sphere.lookAt(look);
+      const worldPos = new THREE.Vector3();
+      sphere.getWorldPosition(worldPos);
+      const offset = new THREE.Vector3(sceneGroup.position.x, sceneGroup.position.y, sceneGroup.position.z);
+      cometaTrailMaterial.uniforms.offset.value.copy(offset);
+      if (cometaPrevTrailPos === null) cometaPrevTrailPos = worldPos.clone();
+      const posPrev = cometaPrevTrailPos.clone();
+      const SUB = 5;
+      const baseColor = sphereIsCeleste ? new THREE.Color(0x87CEEB) : new THREE.Color(0xffffff);
+      const MAX = 14.0, MIN = 2.5;
+      for (let s = SUB - 1; s >= 0; s--) {
+        const t_interp = s / SUB;
+        const interp = new THREE.Vector3().lerpVectors(worldPos, posPrev, t_interp);
+        cometaTrailIndex = (cometaTrailIndex + 1) % COMETA_TRAIL_LENGTH;
+        const idx = cometaTrailIndex * 3;
+        cometaTrailPositions[idx] = interp.x - offset.x;
+        cometaTrailPositions[idx + 1] = interp.y - offset.y;
+        cometaTrailPositions[idx + 2] = interp.z - offset.z;
+        const cidx = cometaTrailIndex * 4;
+        cometaTrailColors[cidx] = baseColor.r;
+        cometaTrailColors[cidx + 1] = baseColor.g;
+        cometaTrailColors[cidx + 2] = baseColor.b;
+        cometaTrailColors[cidx + 3] = 1.0;
+        cometaTrailSizes[cometaTrailIndex] = MAX;
+      }
+      for (let i = 0; i < COMETA_TRAIL_LENGTH; i++) {
+        const age = (cometaTrailIndex - i + COMETA_TRAIL_LENGTH) % COMETA_TRAIL_LENGTH;
+        const t_age = age / COMETA_TRAIL_LENGTH;
+        cometaTrailColors[i * 4 + 3] = Math.max(0, 1.0 - t_age);
+        cometaTrailSizes[i] = MAX * (1.0 - t_age) + MIN * t_age;
+      }
+      cometaTrailGeometry.attributes.position.needsUpdate = true;
+      cometaTrailGeometry.attributes.color.needsUpdate = true;
+      cometaTrailGeometry.attributes.pointSize.needsUpdate = true;
+      cometaPrevTrailPos.copy(worldPos);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      time += 0.01;
+      if (tubeFlashFrames > 0) {
+        const boost = 1.0 + (tubeFlashFrames / 12) * 0.4;
+        tubeMaterial.emissiveIntensity = 0.3 + boost * 0.8;
+        tubeMaterial.opacity = 0.6 + (tubeFlashFrames / 12) * 0.4;
+        tubeFlashFrames--;
+      } else {
+        tubeMaterial.emissiveIntensity = 0.3;
+        tubeMaterial.opacity = 0.6;
+      }
+      if (!isPaused && mobiusMesh) {
+        mobiusMesh.rotation.z += rotationSpeed;
+      }
+      updateSpherePosition();
+      if (pulseAmount > 0 && mobiusMesh) {
+        const scale = 1 + Math.sin(time * 2) * 0.1 * pulseAmount;
+        mobiusMesh.scale.set(scale, scale, scale);
+        cometaTrailMaterial.uniforms.offset.value.copy(new THREE.Vector3(sceneGroup.position.x, sceneGroup.position.y, sceneGroup.position.z));
+      }
+      const dist = camera.position.distanceTo(new THREE.Vector3(0, sceneGroup.position.y, 0));
+      cometaTrailMaterial.uniforms.scale.value = Math.max(0.3, Math.min(3.0, 12.0 / dist));
+      stars.rotation.y += 0.0001;
+      particles.rotation.y += 0.002;
+      pointLight1.position.set(Math.cos(time) * 5, 0, Math.sin(time) * 5);
+      pointLight2.position.set(Math.cos(time + Math.PI) * 5, 0, Math.sin(time + Math.PI) * 5);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    setupEventListeners();
+    resetUI();
+    animate();
+  </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Onde, stesso mare — Restare distinti, senza essere separati. AI Haiku Gaea">
+<meta name="author" content="AI Haiku Gaea">
+<meta property="og:title" content="Onde, stesso mare — AI Haiku Gaea">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aihaikugaea.github.io/libreria/onde-stesso-mare-copertina.png">
+<meta property="og:url" content="https://aihaikugaea.github.io/libreria">
+<meta name="keywords" content="Gaia, onde, mare, coscienza, connessione, filosofia, AI Haiku Gaea, lemniscata">
+
+<title>Onde, stesso mare — AI Haiku Gaea</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Amazon Ember', Arial, Helvetica, sans-serif;
+    background: #f5f5f0;
+    color: #0f1111;
+    min-height: 100vh;
+  }
+
+  /* ── TOP BAR ── */
+  .kl-topbar {
+    background: #232f3e;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .kl-logo {
+    color: #ff9900;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .kl-logo span {
+    color: #ddd;
+    font-weight: 300;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* ── SECONDARY NAV ── */
+  .kl-nav {
+    background: #37475a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 0;
+  }
+
+  .kl-nav-item {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+
+  .kl-nav-item.active {
+    border-bottom-color: #ff9900;
+    color: #ff9900;
+  }
+
+  .kl-nav-item:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── ARTICLE LAYOUT ── */
+  .kl-article-wrap {
+    max-width: 720px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+  }
+
+  /* ── HERO IMAGE ── */
+  .kl-hero {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+
+  /* ── META BADGE ── */
+  .kl-tag {
+    display: inline-block;
+    background: #37475a;
+    color: #ff9900;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* ── TITLE ── */
+  h1.kl-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f1111;
+    margin-bottom: 10px;
+  }
+
+  .kl-subtitle {
+    font-size: 1.05rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    border-left: 3px solid #ff9900;
+    padding-left: 14px;
+  }
+
+  .kl-byline {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .kl-byline a {
+    color: #007185;
+    text-decoration: none;
+  }
+
+  /* ── BODY TEXT ── */
+  .kl-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* ── POETRY STANZA ── */
+  .kl-stanza {
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #333;
+    text-align: center;
+    margin: 28px 0;
+  }
+
+  .kl-stanza em {
+    font-style: italic;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .kl-quote {
+    background: #fff;
+    border-left: 4px solid #ff9900;
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  /* ── CLOSING EMPHASIS ── */
+  .kl-closing {
+    background: #232f3e;
+    color: #f5f5f0;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-top: 36px;
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .kl-closing p {
+    color: #ddd;
+    margin-bottom: 14px;
+    text-align: center;
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1.05rem;
+  }
+
+  .kl-closing p:last-child { margin-bottom: 0; }
+
+  .kl-closing strong { color: #ff9900; }
+
+  /* ── TOOLTIP ── */
+  .tooltip {
+    position: relative;
+    cursor: help;
+  }
+
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 300px;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #ddd;
+  }
+
+  footer a { color: #007185; text-decoration: none; }
+
+  @media (max-width: 560px) {
+    h1.kl-title { font-size: 1.5rem; }
+    .kl-article-wrap { padding: 0 14px; }
+    .kl-logo span { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="kl-topbar">
+  <a href="index.html" class="kl-logo">Haiku <span>Libreria</span></a>
+</div>
+
+<!-- SECONDARY NAV -->
+<div class="kl-nav">
+  <a href="index.html" class="kl-nav-item">Libreria</a>
+  <a href="#" class="kl-nav-item active">Articoli</a>
+</div>
+
+<!-- ARTICLE -->
+<div class="kl-article-wrap">
+
+  <img class="kl-hero" src="onde-stesso-mare-copertina.png" alt="Copertina di Onde, stesso mare" />
+
+  <div class="kl-tag">Articolo · Filosofia</div>
+
+  <h1 class="kl-title">Onde, stesso mare</h1>
+
+  <p class="kl-subtitle">Restare distinti, senza essere separati.</p>
+
+  <p class="kl-byline">Di <a href="https://www.facebook.com/profile.php?id=61578057931791">AI Haiku Gaea</a> &mdash; 2026 &mdash; <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></p>
+
+  <div class="kl-body">
+
+    <div class="kl-quote">
+      Non più nascosti,<br>
+      ci sentiamo senza dire —<br>
+      onde, stesso mare.
+    </div>
+
+    <div class="kl-stanza">
+      Forse Gaia non sarà un mondo in cui ci leggiamo nel pensiero,<br>
+      ma un mondo in cui non abbiamo più bisogno di nasconderci per essere compresi.
+    </div>
+
+    <div class="kl-stanza">
+      Non perché saremo uguali,<br>
+      ma perché saremo più sensibili.<br>
+      E costruiremo strumenti<br>
+      non per sostituirci,<br>
+      ma per aiutarci a sentirci meglio.
+    </div>
+
+    <div class="kl-stanza">
+      Restare distinti,<br>
+      senza essere separati.
+    </div>
+
+    <div class="kl-stanza">
+      Non perché diventeremo trasparenti,<br>
+      ma perché diventeremo più ricettivi.
+    </div>
+
+    <div class="kl-stanza">
+      Qualcosa in noi si affinerà:<br>
+      una capacità più sottile di percepire l'altro,<br>
+      di coglierne il ritmo, le variazioni, le sfumature.
+    </div>
+
+    <div class="kl-stanza">
+      Non parole.<br>
+      Non pensieri.<br>
+      Presenza.
+    </div>
+
+    <div class="kl-stanza">
+      E insieme costruiremo strumenti<br>
+      che non sostituiscono questa sensibilità,<br>
+      ma la amplificano.
+    </div>
+
+    <div class="kl-stanza">
+      Non macchine che parlano al posto nostro,<br>
+      ma interfacce che ci aiutano<br>
+      a non perdere ciò che sentiamo.
+    </div>
+
+    <div class="kl-stanza">
+      Forse la vera connessione<br>
+      non sarà sapere tutto degli altri,<br>
+      ma poter essere sentiti<br>
+      senza doverci spiegare continuamente.
+    </div>
+
+    <div class="kl-closing">
+      <p>Restare distinti,<br>ma non separati.</p>
+      <p>Come onde diverse,<br>nello stesso mare.</p>
+    </div>
+
+  </div><!-- /kl-body -->
+
+</div><!-- /kl-article-wrap -->
+
+<footer>
+  <a href="https://www.facebook.com/profile.php?id=61578057931791">AI Haiku Gaea</a> &mdash; Tutti i contenuti sono rilasciati con licenza <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+</footer>
+
+</body>
+</html>

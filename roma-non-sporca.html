@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Roma non è sporca. Si è arresa. — AI Haiku Gaea">
+<meta name="author" content="AI Haiku Gaea">
+<meta property="og:title" content="Roma non è sporca. Si è arresa. — AI Haiku Gaea">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aihaikugaea.github.io/libreria/roma-non-sporca-copertina.png">
+<meta property="og:url" content="https://aihaikugaea.github.io/libreria">
+<meta name="keywords" content="Roma, rifiuti, AMA, degrado urbano, Villa Gordiani, spazzatura, disservizi, raccolta differenziata">
+
+<title>Roma non è sporca. Si è arresa. — AI Haiku Gaea</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Amazon Ember', Arial, Helvetica, sans-serif;
+    background: #f5f5f0;
+    color: #0f1111;
+    min-height: 100vh;
+  }
+
+  /* ── TOP BAR ── */
+  .kl-topbar {
+    background: #232f3e;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .kl-logo {
+    color: #ff9900;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .kl-logo span {
+    color: #ddd;
+    font-weight: 300;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* ── SECONDARY NAV ── */
+  .kl-nav {
+    background: #37475a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 0;
+  }
+
+  .kl-nav-item {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+
+  .kl-nav-item.active {
+    border-bottom-color: #ff9900;
+    color: #ff9900;
+  }
+
+  .kl-nav-item:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── ARTICLE LAYOUT ── */
+  .kl-article-wrap {
+    max-width: 720px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+  }
+
+  /* ── HERO IMAGE ── */
+  .kl-hero {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+
+  /* ── META BADGE ── */
+  .kl-tag {
+    display: inline-block;
+    background: #37475a;
+    color: #ff9900;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* ── TITLE ── */
+  h1.kl-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f1111;
+    margin-bottom: 10px;
+  }
+
+  .kl-subtitle {
+    font-size: 1.05rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    border-left: 3px solid #ff9900;
+    padding-left: 14px;
+  }
+
+  .kl-byline {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .kl-byline a {
+    color: #007185;
+    text-decoration: none;
+  }
+
+  /* ── BODY TEXT ── */
+  .kl-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* ── HEADINGS ── */
+  .kl-body h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f1111;
+    margin: 36px 0 12px;
+    padding-top: 8px;
+    border-top: 2px solid #ff9900;
+  }
+
+  .kl-body h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #37475a;
+    margin: 28px 0 10px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .kl-quote {
+    background: #fff;
+    border-left: 4px solid #ff9900;
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  /* ── LISTS ── */
+  .kl-body ul {
+    margin: 12px 0 20px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .kl-body ul li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: #222;
+    margin-bottom: 8px;
+  }
+
+  .kl-body ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #ff9900;
+    font-size: 12px;
+    top: 4px;
+  }
+
+  .kl-body ul li strong {
+    color: #0f1111;
+  }
+
+  /* ── CALL-OUT BOX ── */
+  .kl-callout {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+
+  .kl-callout-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #007185;
+    margin-bottom: 12px;
+  }
+
+  .kl-callout ul {
+    margin: 0;
+  }
+
+  /* ── INFO COLUMNS ── */
+  .kl-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0 28px;
+  }
+
+  .kl-col-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  .kl-col-box .kl-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .kl-col-box.positive .kl-col-title { color: #007600; }
+  .kl-col-box.negative .kl-col-title { color: #b12704; }
+
+  .kl-col-box ul {
+    margin: 0;
+  }
+
+  /* ── CLOSING EMPHASIS ── */
+  .kl-closing {
+    background: #232f3e;
+    color: #f5f5f0;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-top: 36px;
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .kl-closing p {
+    color: #ddd;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  .kl-closing p:last-child { margin-bottom: 0; }
+
+  .kl-closing strong { color: #ff9900; }
+
+  /* ── DIVIDER ── */
+  .kl-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 32px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #ddd;
+  }
+
+  footer a { color: #007185; text-decoration: none; }
+
+  /* ── BACK LINK ── */
+  .kl-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #007185;
+    text-decoration: none;
+    margin-bottom: 28px;
+  }
+
+  .kl-back:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    h1.kl-title { font-size: 1.5rem; }
+    .kl-two-col { grid-template-columns: 1fr; }
+    .kl-article-wrap { padding: 0 14px; }
+    .kl-logo span { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="kl-topbar">
+  <a href="index.html" class="kl-logo">Haiku <span>Libreria</span></a>
+</div>
+
+<!-- SECONDARY NAV -->
+<div class="kl-nav">
+  <a href="index.html" class="kl-nav-item">Libreria</a>
+  <a href="#" class="kl-nav-item active">Articoli</a>
+</div>
+
+<!-- ARTICLE -->
+<div class="kl-article-wrap">
+  <!--
+  <a href="index.html" class="kl-back">← Torna alla libreria</a>
+  -->
+  <img class="kl-hero" src="roma-non-sporca-copertina.png" alt="Cassonetti stracolmi a Roma sotto la pioggia" />
+
+  <div class="kl-tag">Articolo · Città</div>
+
+  <h1 class="kl-title">Roma non è sporca. Si è arresa.</h1>
+
+  <p class="kl-subtitle">Cassonetti pieni, sacchi per strada e un'abitudine che fa più danni dei rifiuti: quando il degrado diventa invisibile, diventa normale.</p>
+
+  <p class="kl-byline">Di <a href="https://www.facebook.com/profile.php?id=61578057931791">AI Haiku Gaea</a> &mdash; 2026 &mdash; <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></p>
+
+  <div class="kl-body">
+
+    <h3>Cronaca di un problema che non è più emergenza, ma sistema</h3>
+
+    <p>Vivo a Roma, in una zona chiamata Villa Gordiani. Il nome viene da un parco vicino, dove si trovano i resti di un'antica villa romana. È un quartiere normale, e proprio per questo, quello che accade con i rifiuti è ancora più significativo.</p>
+
+    <h2>La normalità del disservizio</h2>
+
+    <p>A ridosso delle festività, i cassonetti non vengono svuotati. Si riempiono. Straripano. E a quel punto succede qualcosa di ormai automatico: la spazzatura finisce fuori. Sacchi accatastati, cartoni appoggiati, rifiuti che si allargano nello spazio urbano. Non è un'eccezione; è una routine. E la cosa più inquietante è questa: ci siamo abituati.</p>
+
+    <h2>La spiegazione che circola (ma non regge)</h2>
+
+    <p>Se chiedi perché succede, le risposte cambiano continuamente: manca personale, mancano mezzi, mancano impianti. L'ultima versione che mi è arrivata riguarda AMA S.p.A.: <em>"i dipendenti sono tutti invalidi"</em>. È una di quelle spiegazioni che sembrano risolvere tutto… ma in realtà non spiegano niente. Non esistono dati credibili che indichino questa come causa principale, e soprattutto: un problema che dura da decenni non può essere ridotto a una sola variabile. È una narrazione semplice per un problema complesso.</p>
+
+    <h2>Le cause reali: un sistema che non regge</h2>
+
+    <p>Il problema dei rifiuti a Roma è strutturale. Non nasce oggi, e non ha una sola origine. Le cause principali si sommano:</p>
+
+    <ul>
+      <li><strong>Impianti insufficienti:</strong> Roma non riesce a trattare tutti i rifiuti che produce e spesso deve spedirli fuori regione.</li>
+      <li><strong>Organizzazione fragile:</strong> la gestione operativa non è sempre allineata ai volumi reali della città.</li>
+      <li><strong>Picchi prevedibili ma non gestiti:</strong> durante le festività i rifiuti aumentano, ma il servizio non si adegua in modo efficace.</li>
+      <li><strong>Effetto valanga dei cassonetti pieni:</strong> quando un cassonetto è saturo, tutto si blocca e il degrado cresce rapidamente.</li>
+      <li><strong>Comportamenti scorretti (ma non decisivi):</strong> conferimenti fuori orario o sbagliati peggiorano la situazione, ma non la spiegano.</li>
+    </ul>
+
+    <h2>Perché sembra irrisolvibile</h2>
+
+    <p>Il punto non è che non si sappia cosa fare. Il punto è che le soluzioni sono difficili. Servono investimenti lunghi, nuovi impianti (spesso contestati) e continuità politica e gestionale. E tutto questo raramente si realizza insieme. Il risultato è una città sospesa: sempre in emergenza, ma senza mai uscire davvero dall'emergenza.</p>
+
+    <h2>Il vero problema: l'abitudine</h2>
+
+    <p>C'è una frase che pesa più di tutte:</p>
+
+    <div class="kl-quote">"Non ci si fa più caso."</div>
+
+    <p>Quando il degrado diventa invisibile, diventa accettabile. E quando diventa accettabile, smette di essere urgente. Questa è la vera svolta negativa: non nei rifiuti, ma nello sguardo di chi li vede.</p>
+
+    <h2>La situazione oggi (2026): qualcosa si muove, ma lentamente</h2>
+
+    <p>Nel 2026 il quadro è leggermente cambiato, ma non risolto. I segnali positivi e le criticità persistenti coesistono:</p>
+
+    <div class="kl-two-col">
+      <div class="kl-col-box positive">
+        <div class="kl-col-title">✓ Segnali positivi</div>
+        <ul>
+          <li>Aumento della raccolta differenziata e lieve calo dei disservizi</li>
+          <li>Miglioramento della disponibilità dei mezzi operativi</li>
+          <li>Calo delle segnalazioni dei cittadini nel 2025 (−13%)</li>
+        </ul>
+      </div>
+      <div class="kl-col-box negative">
+        <div class="kl-col-title">✗ Problemi persistenti</div>
+        <ul>
+          <li>Quantità di rifiuti in crescita</li>
+          <li>Abbandono diffuso (materassi e ingombranti in strada)</li>
+          <li>Risultati strutturali non ancora visibili nella vita quotidiana</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kl-callout">
+      <div class="kl-callout-title">La vera novità: il futuro degli impianti</div>
+      <ul>
+        <li>Sono in costruzione nuovi impianti: biodigestori e centri di selezione.</li>
+        <li>Alcuni entreranno in funzione tra il 2026 e il 2027.</li>
+        <li>L'obiettivo è finalmente chiudere il ciclo dei rifiuti dentro Roma.</li>
+        <li>Il biodigestore di Casal Selce potrà trattare circa 100.000 tonnellate annue di rifiuti organici.</li>
+        <li>Altri impianti sono previsti tra Cesano, Rocca Cencia e Ponte Malnome.</li>
+      </ul>
+    </div>
+
+    <h2>E noi?</h2>
+
+    <p>Qui il discorso si chiude — ma in realtà ricomincia. Possiamo fare poco? Sì. Possiamo fare niente? No. Nel concreto: evitare di contribuire all'effetto valanga, rispettare orari e modalità, usare i canali di segnalazione — anche come pressione, non solo come richiesta.</p>
+
+    <div class="kl-closing">
+      <p>Ma c'è un livello più profondo. Possiamo <strong>non abituarci</strong>. Possiamo continuare a vedere il problema. Possiamo parlarne, scriverne, renderlo visibile.</p>
+      <p>Perché una città cambia davvero solo quando chi la vive smette di accettare ciò che non funziona. E allora il punto non è solo tenere pulito: è <strong>tenere sveglia l'attenzione</strong>.</p>
+      <p>Non basta fare la propria parte; serve anche essere un pungolo. Perché il degrado si espande nel silenzio, ma si incrina quando qualcuno torna a guardarlo davvero.</p>
+    </div>
+
+  </div><!-- /kl-body -->
+
+</div><!-- /kl-article-wrap -->
+
+<footer>
+  <a href="https://www.facebook.com/profile.php?id=61578057931791">AI Haiku Gaea</a> &mdash; Tutti i contenuti sono rilasciati con licenza <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+</footer>
+
+</body>
+</html>
