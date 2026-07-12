@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I bulli crescono. E qualche volta diventano capi. Dal calcio alla sedia al potere negli uffici: cambiano i luoghi, non sempre cambia il meccanismo. — AI Haiku Gaea">
+<meta name="author" content="AI Haiku Gaea">
+<meta property="og:title" content="I bulli crescono. E qualche volta diventano capi — AI Haiku Gaea">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://maurodicola.github.io/testi/i-bulli-crescono-copertina.png">
+<meta property="og:url" content="https://maurodicola.github.io/testi/i-bulli-crescono.html">
+<meta name="keywords" content="bullismo, mobbing, potere, leadership, gregari, prepotenza, lavoro, disturbo bipolare, manifesto">
+
+<title>I bulli crescono. E qualche volta diventano capi — AI Haiku Gaea</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Amazon Ember', Arial, Helvetica, sans-serif;
+    background: #f5f5f0;
+    color: #0f1111;
+    min-height: 100vh;
+  }
+
+  /* ── TOP BAR ── */
+  .kl-topbar {
+    background: #232f3e;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .kl-logo {
+    color: #ff9900;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .kl-logo span {
+    color: #ddd;
+    font-weight: 300;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* ── SECONDARY NAV ── */
+  .kl-nav {
+    background: #37475a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 0;
+  }
+
+  .kl-nav-item {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+
+  .kl-nav-item.active {
+    border-bottom-color: #ff9900;
+    color: #ff9900;
+  }
+
+  .kl-nav-item:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── ARTICLE LAYOUT ── */
+  .kl-article-wrap {
+    max-width: 720px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+  }
+
+  /* ── HERO IMAGE ── */
+  .kl-hero {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+
+  /* ── META BADGE ── */
+  .kl-tag {
+    display: inline-block;
+    background: #37475a;
+    color: #ff9900;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* ── TITLE ── */
+  h1.kl-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f1111;
+    margin-bottom: 10px;
+  }
+
+  .kl-subtitle {
+    font-size: 1.05rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    border-left: 3px solid #ff9900;
+    padding-left: 14px;
+  }
+
+  .kl-byline {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .kl-byline a {
+    color: #007185;
+    text-decoration: none;
+  }
+
+  /* ── BODY TEXT ── */
+  .kl-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* ── HEADINGS ── */
+  .kl-body h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f1111;
+    margin: 36px 0 12px;
+    padding-top: 8px;
+    border-top: 2px solid #ff9900;
+  }
+
+  .kl-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #37475a;
+    margin: 28px 0 10px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .kl-quote {
+    background: #fff;
+    border-left: 4px solid #ff9900;
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  /* ── CLOSING EMPHASIS ── */
+  .kl-closing {
+    background: #232f3e;
+    color: #f5f5f0;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-top: 36px;
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .kl-closing p {
+    color: #ddd;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  .kl-closing p:last-child { margin-bottom: 0; }
+
+  .kl-closing strong { color: #ff9900; }
+
+  /* ── DIVIDER ── */
+  .kl-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 32px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #ddd;
+  }
+
+  footer a { color: #007185; text-decoration: none; }
+
+  @media (max-width: 560px) {
+    h1.kl-title { font-size: 1.5rem; }
+    .kl-article-wrap { padding: 0 14px; }
+    .kl-logo span { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="kl-topbar">
+  <a href="index.html" class="kl-logo">Haiku <span>Libreria</span></a>
+</div>
+
+<!-- SECONDARY NAV -->
+<div class="kl-nav">
+  <a href="index.html" class="kl-nav-item">Libreria</a>
+  <a href="#" class="kl-nav-item active">Articoli</a>
+</div>
+
+<!-- ARTICLE -->
+<div class="kl-article-wrap">
+
+  <img class="kl-hero" src="i-bulli-crescono-copertina.png" alt="Ragazzo seduto a terra in un corridoio buio, il volto nascosto tra le braccia">
+
+  <div class="kl-tag">Saggio · Potere e prepotenza</div>
+
+  <h1 class="kl-title">I bulli crescono. E qualche volta diventano capi</h1>
+
+  <p class="kl-subtitle">Dal calcio alla sedia al potere negli uffici: cambiano i luoghi, non sempre cambia il meccanismo</p>
+
+  <p class="kl-byline">Di AI Haiku Gaea</a> &mdash; 2026 &mdash; <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a> &mdash; Tempo di lettura: 8 minuti</p>
+
+  <div class="kl-body">
+
+    <p>Ho incontrato il mio primo bullo alle scuole medie. Allora, almeno nel linguaggio comune che conoscevo io, il concetto di bullismo non esisteva ancora. O meglio: esistevano i bulli, esistevano le vittime, esistevano i gregari e spesso esistevano anche gli spettatori; mancava una parola capace di mettere insieme tutto questo.</p>
+
+    <p>Chiamiamolo <strong>Sergio</strong>. Naturalmente non era questo il suo vero nome. Sergio aveva anche un compagno di merende, che chiamerò <strong>Renzo</strong>; mi disprezzavano e non perdevano occasione per farmelo sapere. Durante le lezioni avevano un passatempo semplice: prendere a calci la mia sedia. Sapevano che ero attento, che non volevo perdere una spiegazione e, proprio per questo, cercavano di impedirmi di ascoltare. Sergio, poi, si divertiva a prendermi a calci anche mentre tornavamo a casa.</p>
+
+    <p>Io fui promosso senza battere ciglio; loro furono bocciati.</p>
+
+    <p>Potrei raccontarla come una piccola storia di giustizia scolastica: quello bravo va avanti, i bulli restano indietro. Ma non è questo ciò che ricordo con maggiore amarezza; ricordo soprattutto il silenzio degli adulti, il totale menefreghismo delle insegnanti.</p>
+
+    <p>Perché il bullo raramente agisce davvero da solo. Anche quando è uno, intorno a lui esiste quasi sempre un piccolo sistema: il gregario che ride, quello che lo spalleggia, quello che ha paura di contraddirlo, quello che guarda altrove e, qualche volta, l'adulto che vede abbastanza da poter intervenire ma decide che non è affar suo.</p>
+
+    <p>Oggi definiamo bullismo un comportamento aggressivo ripetuto nel tempo, o suscettibile di ripetersi, nel quale esiste uno squilibrio di potere reale o percepito. Il potere può essere la forza fisica, ma anche la popolarità, il ruolo nel gruppo, la capacità di isolare qualcuno o semplicemente la presenza di altri pronti a sostenere l'aggressore.</p>
+
+    <p>Il bullo, quindi, non è necessariamente quello che picchia; può essere quello che umilia, intimidisce, esclude, ridicolizza, quello che individua una vulnerabilità e la usa sistematicamente per esercitare potere. E poi ci sono i gregari, fondamentali, perché il bullo ha bisogno di un pubblico; ha bisogno di qualcuno che rida, approvi, taccia o esegua. Senza il branco, molte forme di prepotenza perderebbero gran parte della loro forza.</p>
+
+    <p><strong>Non tutti i gregari diventano bulli.</strong> Alcuni restano complici passivi, altri agiscono per paura o per conformismo, altri ancora, prima o poi, riescono ad allontanarsi e magari a comprendere il ruolo che hanno avuto. Ma poi ci sono quelli che, frequentando i bulli, imparano a diventarlo.</p>
+
+    <p>All'inizio spalleggiano, ridono, incoraggiano, approvano; spesso lo fanno per vigliaccheria, per convenienza o per il timore di diventare a loro volta bersagli. Poi, a forza di stare con lo zoppo, imparano a zoppicare: assimilano il linguaggio della prepotenza, scoprono il vantaggio di stare dalla parte di chi domina e, qualche volta, finiscono per riprodurre sugli altri ciò che prima si limitavano ad applaudire.</p>
+
+    <p>Ne ho conosciuti diversi e, lo ammetto, sono forse quelli che disprezzo di più. Nel bullo originario, almeno, la prepotenza è manifesta; in loro vedo qualcosa che mi infastidisce ancora di più: la scelta di mettersi al servizio della prepotenza, fino ad assimilarla e diventarne parte.</p>
+
+    <p>Passarono gli anni. Pensavo che i bulli appartenessero all'infanzia; mi sbagliavo.</p>
+
+    <p>Al mio terzo lavoro ero impiegato nell'amministrazione del personale. Un giorno una collega — la chiamerò <strong>Elena</strong> — cominciò improvvisamente a trattarmi male; ancora oggi non so con certezza che cosa fosse accaduto. Poi lei e il mio responsabile sembrarono decidere che per me fosse arrivato il momento di andarmene. Cominciò qualcosa che allora non sapevo nominare; non conoscevo la parola <em>mobbing</em>.</p>
+
+    <p>Anche quella parola sarebbe entrata molto più tardi nel linguaggio comune, ma il fenomeno esisteva già: isolamento, ostilità ripetuta, svalutazione, pressioni, attacchi alla posizione professionale e alla persona. Cambiano gli strumenti, ma il principio può essere sorprendentemente simile a quello del cortile della scuola.</p>
+
+    <p>Alle medie si prende a calci una sedia; da adulti non serve più. Si può togliere una persona dalle comunicazioni importanti, screditarla, renderle il lavoro impossibile, trattarla improvvisamente come un problema, costruire intorno a lei l'impressione che sia incapace, inadeguata o indesiderata.</p>
+
+    <div class="kl-quote">Il calcio alla sedia diventa più elegante; qualche volta indossa una giacca.</div>
+
+    <p>Il mio terzo incontro con questa dinamica avvenne mentre lavoravo come docente di informatica. Tutto andò bene finché non cambiò il responsabile, e lì accadde qualcosa su cui continuo a riflettere. Dovendo scegliere chi mettere al vertice, venne scelta una persona che, ai miei occhi, possedeva proprio alcune delle caratteristiche che troppo spesso vengono scambiate per leadership: durezza, capacità di imporsi, aggressività, disponibilità a esercitare pressione sugli altri.</p>
+
+    <p>Ancora una volta mi trovai dentro una dinamica distruttiva. Alla fine, me ne andai da quel lavoro per esaurimento; soltanto in seguito arrivò la diagnosi di disturbo bipolare.</p>
+
+    <p>Non posso e non voglio sostenere che siano stati il bullismo, il mobbing o quell'esperienza lavorativa a causare il disturbo; la salute mentale è molto più complessa di una semplice catena di causa ed effetto. Posso però dire ciò che appartiene alla mia esperienza: quelle vicende mi hanno ferito, alcune profondamente, e sono entrate a far parte della storia con cui ho dovuto fare i conti.</p>
+
+    <p>E naturalmente non furono gli unici bulli che incontrai nella mia vita.</p>
+
+    <p>Ne incontrai altri, anche fuori dal lavoro. Alcuni riuscirono a ferirmi e mi costrinsero ad abbandonare il gruppo in cui mi trovavo; da altri fuggii senza perdere molto. Con altri ancora, finalmente, potei semplicemente andarmene, mandarli affanculo e non perdere nulla.</p>
+
+    <p>Forse anche questo fa parte della storia: non tutti i bulli hanno lo stesso potere su di noi per tutta la vita. A volte ci feriscono, a volte ci costringono a lasciare qualcosa a cui tenevamo; altre volte impariamo a riconoscerli prima, a sottrarci al loro gioco, a non concedere loro il diritto di decidere il nostro posto.</p>
+
+    <p>Ma qui il discorso diventa più grande della mia storia.</p>
+
+    <div class="kl-quote">Perché continuiamo a scegliere così spesso i capibranco sbagliati?</div>
+
+    <p>Siamo attratti da segnali immediatamente visibili: la sicurezza, la voce forte, la decisione, la capacità di imporsi, l'assenza apparente di dubbi. Tutte qualità che possono appartenere anche a un buon leader, naturalmente, ma che non dimostrano da sole né competenza né intelligenza né equilibrio morale.</p>
+
+    <p>A volte finiamo per confondere la sicurezza con la presunzione, l'autorità con l'autorevolezza, la decisione con la prepotenza, la capacità di ottenere risultati con la capacità di schiacciare chi si trova sotto.</p>
+
+    <p>E qui arriviamo al punto che più mi interessa: <strong>il vero problema non è soltanto il bullo. È il branco che lo sceglie.</strong></p>
+
+    <p>Il bullo può proporsi, può alzare la voce, può mostrare i muscoli, veri o metaforici; ma qualcuno deve riconoscergli il potere, qualcuno deve seguirlo, qualcuno deve promuoverlo, qualcuno deve pensare: <em>questo è uno che sa farsi rispettare</em>.</p>
+
+    <p>E magari ciò che chiamiamo rispetto è soltanto paura.</p>
+
+    <p>Questo meccanismo non appartiene soltanto alla scuola o al lavoro; può apparire in un gruppo di amici, in un'associazione, in un piccolo paese, in un'azienda, in una città, fino ai livelli più alti dell'organizzazione sociale. Cambiano le dimensioni; non sempre cambia il meccanismo.</p>
+
+    <p>Ci sono naturalmente molte eccezioni. Esistono responsabili capaci, autorevoli senza essere autoritari, persone che guidano senza umiliare e che ottengono risultati senza distruggere chi lavora con loro; ma proprio perché riconosciamo immediatamente il valore di queste persone, comprendiamo quanto siano preziose.</p>
+
+    <p>Per molto tempo ho pensato soprattutto a ciò che avevano fatto i vari "Sergio", "Elena" e gli altri che ho incontrato; oggi penso anche a chi stava intorno. A chi rideva, a chi eseguiva, a chi promuoveva, a chi vedeva e non interveniva. E penso anche a chi, dopo avere trascorso abbastanza tempo accanto al prepotente, ha imparato da lui e ha cominciato a comportarsi nello stesso modo.</p>
+
+    <p>Perché forse il bullo non è mai soltanto una persona; è anche una relazione di potere. E ogni relazione di potere ha bisogno di qualcuno che la riconosca, la sostenga o, semplicemente, accetti di non contrastarla.</p>
+
+    <div class="kl-closing">
+      <p>I bulli crescono. Alcuni cambiano; altri imparano soltanto a usare strumenti più raffinati. Alcuni trovano gregari; alcuni gregari, a loro volta, imparano a diventare bulli. E qualcuno, a volte, arriva perfino al comando.</p>
+      <p>Per questo dovremmo imparare a scegliere meglio: non chi riesce a dominare un gruppo, ma chi sa farlo crescere; non chi ottiene obbedienza attraverso la paura, ma chi conquista fiducia; non chi dimostra di essere il più forte del branco.</p>
+      <p><strong>Chi guida davvero non ha bisogno di rendere gli altri più piccoli per sembrare grande.</strong></p>
+    </div>
+
+  </div><!-- /kl-body -->
+
+</div><!-- /kl-article-wrap -->
+
+<footer>
+  <a>AI Haiku Gaea</a> &mdash; Tutti i contenuti sono rilasciati con licenza <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+</footer>
+
+</body>
+</html>
