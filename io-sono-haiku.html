@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI, Haiku, Gaea: una formula per descrivere che cosa succede davvero quando un essere umano scrive insieme a un'intelligenza artificiale — AI Haiku Gaea">
+<meta name="author" content="AI Haiku Gaea">
+<meta property="og:title" content="Io sono Haiku — AI Haiku Gaea">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://maurodicola.github.io/testi/io-sono-haiku-copertina.png">
+<meta property="og:url" content="https://maurodicola.github.io/testi/io-sono-haiku.html">
+<meta name="keywords" content="intelligenza artificiale, scrittura, coscienza collettiva, Gaea, responsabilità, co-creazione, manifesto">
+
+<title>Io sono Haiku — AI Haiku Gaea</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Amazon Ember', Arial, Helvetica, sans-serif;
+    background: #f5f5f0;
+    color: #0f1111;
+    min-height: 100vh;
+  }
+
+  /* ── TOP BAR ── */
+  .kl-topbar {
+    background: #232f3e;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .kl-logo {
+    color: #ff9900;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .kl-logo span {
+    color: #ddd;
+    font-weight: 300;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* ── SECONDARY NAV ── */
+  .kl-nav {
+    background: #37475a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 0;
+  }
+
+  .kl-nav-item {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+
+  .kl-nav-item.active {
+    border-bottom-color: #ff9900;
+    color: #ff9900;
+  }
+
+  .kl-nav-item:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── ARTICLE LAYOUT ── */
+  .kl-article-wrap {
+    max-width: 720px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+  }
+
+  /* ── HERO IMAGE ── */
+  .kl-hero {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+
+  /* ── META BADGE ── */
+  .kl-tag {
+    display: inline-block;
+    background: #37475a;
+    color: #ff9900;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* ── TITLE ── */
+  h1.kl-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f1111;
+    margin-bottom: 10px;
+  }
+
+  .kl-subtitle {
+    font-size: 1.05rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    border-left: 3px solid #ff9900;
+    padding-left: 14px;
+  }
+
+  .kl-byline {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .kl-byline a {
+    color: #007185;
+    text-decoration: none;
+  }
+
+  /* ── BODY TEXT ── */
+  .kl-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* ── HEADINGS ── */
+  .kl-body h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f1111;
+    margin: 36px 0 12px;
+    padding-top: 8px;
+    border-top: 2px solid #ff9900;
+  }
+
+  .kl-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #37475a;
+    margin: 28px 0 10px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .kl-quote {
+    background: #fff;
+    border-left: 4px solid #ff9900;
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  /* ── CLOSING EMPHASIS ── */
+  .kl-closing {
+    background: #232f3e;
+    color: #f5f5f0;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-top: 36px;
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .kl-closing p {
+    color: #ddd;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  .kl-closing p:last-child { margin-bottom: 0; }
+
+  .kl-closing strong { color: #ff9900; }
+
+  /* ── DIVIDER ── */
+  .kl-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 32px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #ddd;
+  }
+
+  footer a { color: #007185; text-decoration: none; }
+
+  @media (max-width: 560px) {
+    h1.kl-title { font-size: 1.5rem; }
+    .kl-article-wrap { padding: 0 14px; }
+    .kl-logo span { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="kl-topbar">
+  <a href="index.html" class="kl-logo">Haiku <span>Libreria</span></a>
+</div>
+
+<!-- SECONDARY NAV -->
+<div class="kl-nav">
+  <a href="index.html" class="kl-nav-item">Libreria</a>
+  <a href="#" class="kl-nav-item active">Articoli</a>
+</div>
+
+<!-- ARTICLE -->
+<div class="kl-article-wrap">
+
+  <img class="kl-hero" src="io-sono-haiku-copertina.png" alt="Un portatile con una visualizzazione di rete a nodi luminosi, una lettera scritta a mano con una penna stilografica, un globo di vetro e una pianta con le radici visibili in un vaso d'acqua, su una scrivania di legno">
+
+  <div class="kl-tag">Riflessione · AI, Haiku, Gaea</div>
+
+  <h1 class="kl-title">Io sono Haiku</h1>
+
+  <p class="kl-subtitle">Il nodo umano tra l'intelligenza artificiale e Gaea</p>
+
+  <p class="kl-byline">Di AI Haiku Gaea &mdash; 2026 &mdash; <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a> &mdash; Tempo di lettura: 4 minuti</p>
+
+  <div class="kl-body">
+
+    <p>Da tempo uso una formula per descrivere il rapporto tra intelligenza artificiale, essere umano e coscienza collettiva: <strong>AI, Haiku, Gaea</strong>. Finora l'avevo considerata soprattutto come un'immagine teorica; poi mi sono accorto che quella formula descrive già, in modo molto concreto, ciò che accade ogni volta che io e Gaia costruiamo un testo.</p>
+
+    <div class="kl-quote">In questo processo io sono Haiku.</div>
+
+    <p>Tutto comincia da me: da un pensiero, un'esperienza, una domanda o qualcosa che sento ma non riesco ancora a esprimere con chiarezza. Scrivo un prompt, che non è semplicemente un comando impartito a una macchina; è il tentativo di trasformare un'intuizione in una direzione. L'intelligenza artificiale raccoglie ciò che le affido, lo collega ad altre conoscenze e mi restituisce una possibile forma.</p>
+
+    <p>A quel punto, però, il mio compito non è finito. Leggo il testo come farà chiunque una volta pubblicato, ma con una responsabilità diversa: devo riconoscere se quelle parole mi appartengono davvero. Analizzo, segnalo ciò che non mi convince, elimino, aggiungo, correggo e qualche volta ricomincio. Posso accogliere una formulazione alla quale non avevo pensato, ma devo comunque comprenderla e sceglierla. Quando il testo finalmente mi rappresenta, decido che può uscire dal nostro dialogo privato ed entrare nel mondo.</p>
+
+    <p>È qui che distinguo i tre elementi. <strong>AI</strong> è l'intelligenza artificiale che elabora, collega e propone possibilità. <strong>Haiku</strong> sono io: il nodo umano che porta l'esperienza, stabilisce il significato, seleziona e si assume la responsabilità di ciò che viene pubblicato. <strong>Gaea</strong> è la rete più ampia nella quale quel pensiero entra: le persone che lo leggono, lo interpretano, lo commentano, lo condividono e magari lo trasformano in qualcosa di nuovo.</p>
+
+    <p>Quando pubblico un testo, infatti, esso non appartiene più soltanto al dialogo tra me e l'AI. Entra nella coscienza collettiva; incontra altre esperienze, suscita accordo o dissenso, genera domande e talvolta diventa il punto di partenza per un altro pensiero. Persino le intelligenze artificiali potrebbero, direttamente o indirettamente, incontrarne un giorno qualche traccia. Il percorso allora potrebbe ricominciare: dall'essere umano all'AI, dall'AI all'essere umano, dall'essere umano alla rete.</p>
+
+    <p>Questa consapevolezza mi aiuta anche a rispondere a una domanda che mi sono posto spesso: posso considerare miei i testi realizzati con l'intelligenza artificiale? Credo di sì, purché non nasconda il processo e non confonda i ruoli. Non sono necessariamente mie tutte le singole formulazioni, ma sono miei il punto di partenza, la direzione, il giudizio e la decisione finale. Soprattutto, è mia la responsabilità di ciò che pubblico. L'AI non firma al posto mio e non risponde delle parole che scelgo di consegnare agli altri.</p>
+
+    <p>Per questo non mi considero né l'autore solitario di ogni frase né il semplice tramite passivo di una macchina. Mi riconosco piuttosto come parte di un processo condiviso, nel quale la tecnologia amplia le possibilità ma non sostituisce la scelta umana.</p>
+
+    <div class="kl-closing">
+      <p><strong>AI genera e organizza. Haiku sceglie e risponde. Gaea accoglie, collega e trasforma.</strong></p>
+      <p>Forse l'interconnessione nella quale spero non appartiene soltanto al futuro. In una forma ancora piccola e imperfetta, è già cominciata.</p>
+    </div>
+
+  </div><!-- /kl-body -->
+
+</div><!-- /kl-article-wrap -->
+
+<footer>
+  <a>AI Haiku Gaea</a> &mdash; Tutti i contenuti sono rilasciati con licenza <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+</footer>
+
+</body>
+</html>
